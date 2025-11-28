@@ -41,6 +41,7 @@ cp .env.example .env
 # Start development server
 npm start
 ```
+[🔝 Back to Top](#table-of-contents)
 
 ## Features
 
