@@ -4,12 +4,12 @@ import { connectDB } from "./app/config/connectDB";
 
 (async function main() {
   try {
-    await connectDB()
+    await connectDB();
 
     app.listen(config.port, () => {
       console.log(`Example app listening on http://localhost:${config.port}`);
     });
   } catch (err) {
-    console.log('Server startup failed.', err);
+    console.log("Server startup failed.", err);
   }
 })();
