@@ -6,10 +6,10 @@ A robust, production-ready Express.js starter template with TypeScript, MongoDB,
 
 ## Table of Contents
 
-- [Quick Start](#-quick-start)
-- [Features](#-features)
-- [Technologies](#-technologies)
-- [Error Handling System](#-error-handling-system)
+- [Quick Start](#quick-start)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Error Handling System](#error-handling-system)
   - [Purpose](#purpose)
   - [Required Dependencies](#required-dependencies)
   - [Error Types](#error-types)
@@ -18,9 +18,8 @@ A robust, production-ready Express.js starter template with TypeScript, MongoDB,
   - [Utility Functions](#utility-functions)
   - [Response Format](#error-response-format)
   - [Testing Errors](#testing-errors)
-- [Roadmap](#-roadmap)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -43,7 +42,7 @@ cp .env.example .env
 npm start
 ```
 
-## ✨ Features
+## Features
 
 ### Implemented
 
