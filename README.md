@@ -41,21 +41,18 @@ cp .env.example .env
 # Start development server
 npm start
 ```
+
 [🔝 Back to Top](#table-of-contents)
 
 ## Features
 
 ### Implemented
 
-- **Express.js with TypeScript**
-- **MongoDB with Mongoose ODM**
-- **CORS Enabled**
-- **Environment Configuration**
 - **HTTP Status Codes**
 - **Global Error Handling**
-- **Input Validation**
+- **appError, JWTError, not-found & mongoose error handled**
+- **Zod Validation**
 - **Async Handler Wrapper**
-- **File Upload Error Handling**
 
 ### Planned Features
 
@@ -82,6 +79,7 @@ npm start
 | **Error Handling** | Custom AppError System      |
 
 ---
+
 [🔝 Back to Top](#table-of-contents)
 
 ## Error Handling System
@@ -123,6 +121,7 @@ export type TGenericErrorResponse = {
   errorSources: TErrorSources;
 };
 ```
+
 [🔝 Back to Top](#table-of-contents)
 
 ### Custom Error Class
@@ -175,6 +174,7 @@ throw new AppError(status.BAD_REQUEST, "Validation failed", [
   { path: "email", message: "Invalid email format" },
 ]);
 ```
+
 [🔝 Back to Top](#table-of-contents)
 
 ### error-handlers
@@ -208,6 +208,7 @@ const handleZodError = (err: ZodError): TGenericErrorResponse => {
 
 export default handleZodError;
 ```
+
 [🔝 Back to Top](#table-of-contents)
 
 #### Mongoose Error Handlers
@@ -272,6 +273,7 @@ export {
   handleMongooseDuplicateKeyError,
 };
 ```
+
 [🔝 Back to Top](#table-of-contents)
 
 #### JWT Error Handlers
@@ -314,6 +316,7 @@ const handleJWTExpiredError = (): TGenericErrorResponse => {
 
 export { handleJWTError, handleJWTExpiredError };
 ```
+
 [🔝 Back to Top](#table-of-contents)
 
 #### Global Error Handler
@@ -449,6 +452,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, _next) => {
 
 export default globalErrorHandler;
 ```
+
 [🔝 Back to Top](#table-of-contents)
 
 ### Utility Functions
@@ -491,6 +495,7 @@ router.get(
   })
 );
 ```
+
 [🔝 Back to Top](#table-of-contents)
 
 ### Error Response Format
@@ -529,6 +534,7 @@ router.get(
 ```
 
 ---
+
 [🔝 Back to Top](#table-of-contents)
 
 ### Testing Errors
@@ -649,6 +655,7 @@ curl http://localhost:5000/test/generic-error
 # Test 404 handling for non-existent routes
 curl http://localhost:5000/non-existent-route
 ```
+
 [🔝 Back to Top](#table-of-contents)
 
 ## Contributing
@@ -674,9 +681,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 For questions or support, please open an issue on GitHub.
 Contact me at : inbx.mahbub@gmail.com
 
-[🔝 Back to Top](#table-of-contents)
----
-
+## [🔝 Back to Top](#table-of-contents)
 
 <div align="center">
 Made with ❤️ by MAHBUBUR RAHMAN
