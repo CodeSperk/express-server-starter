@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import config from ".";
+import mongoose from 'mongoose';
+import config from '.';
 
 export async function connectDB(): Promise<void> {
   try {
@@ -8,8 +8,8 @@ export async function connectDB(): Promise<void> {
       socketTimeoutMS: 45000,
       bufferCommands: false,
     });
-    console.log(`MongoDB connected: ${conn.connection.host}`);
+    console.info(`MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error("MongoDB connection failed", error);
+    console.error('MongoDB connection failed', error);
   }
 }

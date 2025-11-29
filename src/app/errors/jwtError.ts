@@ -1,17 +1,17 @@
-import status from "http-status";
-import { TErrorSources, TGenericErrorResponse } from "../types/error.type";
+import status from 'http-status';
+import { TErrorSources, TGenericErrorResponse } from '../types/error.type';
 
 const handleJWTError = (): TGenericErrorResponse => {
   const errorSources: TErrorSources = [
     {
-      path: "token",
-      message: "Invalid token. Please log in again.",
+      path: 'token',
+      message: 'Invalid token. Please log in again.',
     },
   ];
 
   return {
     statusCode: status.UNAUTHORIZED,
-    message: "Authentication Failed",
+    message: 'Authentication Failed',
     errorSources,
   };
 };
@@ -19,14 +19,14 @@ const handleJWTError = (): TGenericErrorResponse => {
 const handleJWTExpiredError = (): TGenericErrorResponse => {
   const errorSources: TErrorSources = [
     {
-      path: "token",
-      message: "Your session has expired. Please log in again.",
+      path: 'token',
+      message: 'Your session has expired. Please log in again.',
     },
   ];
 
   return {
     statusCode: status.UNAUTHORIZED,
-    message: "Authentication Failed",
+    message: 'Authentication Failed',
     errorSources,
   };
 };

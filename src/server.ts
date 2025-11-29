@@ -1,6 +1,6 @@
-import app from "./app";
-import config from "./app/config";
-import { connectDB } from "./app/config/connectDB";
+import app from './app';
+import config from './app/config';
+import { connectDB } from './app/config/connectDB';
 
 const PORT = config.port || 3000;
 
@@ -9,14 +9,12 @@ const PORT = config.port || 3000;
     await connectDB();
 
     app.listen(config.port, () => {
-      console.log(`Server running on port ${PORT}`);
-      console.log(`Environment: ${config.node_env}`);
-      console.log(
-        `MongoDB: ${config.database_url ? "Connected" : "Not configured"}`
-      );
+      console.info(`Server running on port ${PORT}`);
+      console.info(`Environment: ${config.node_env}`);
+      console.info(`MongoDB: ${config.database_url ? 'Connected' : 'Not configured'}`);
     });
   } catch (err) {
-    console.log("Server startup failed.", err);
+    console.error('Server startup failed.', err);
     process.exit(1);
   }
 })();

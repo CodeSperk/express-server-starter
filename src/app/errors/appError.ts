@@ -1,4 +1,4 @@
-import { TErrorSources } from "../types/error.type";
+import { TErrorSources } from '../types/error.type';
 
 class AppError extends Error {
   public statusCode: number;
@@ -10,7 +10,7 @@ class AppError extends Error {
     message: string,
     errors: TErrorSources | null = null,
     isOperational: boolean = true,
-    stack?: string
+    stack?: string,
   ) {
     super(message);
 
