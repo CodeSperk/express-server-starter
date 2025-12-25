@@ -20,7 +20,6 @@ app.get('/', (_req: Request, res: Response) => {
   });
 });
 
-//For Testing Errors
 app.use('/test', testRoutes);
 
 app.use(notFound);
