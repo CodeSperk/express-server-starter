@@ -30,31 +30,31 @@ npm run dev
   - Secure token verification
   - Password change invalidates old tokens
 - Global Error Handling
- - Zod validation errors
- - Mongoose validation & duplicate key errors
- - JWT & Multer errors
- - Operational vs programming error separation
+  - Zod validation errors
+  - Mongoose validation & duplicate key errors
+  - JWT & Multer errors
+  - Operational vs programming error separation
 - Zod Validation
- - Request validation (body, params, query)
- - Environment variable validation
+  - Request validation (body, params, query)
+  - Environment variable validation
 - Security Hardening
- - helmet for secure HTTP headers
- - express-rate-limit for abuse protection
+  - helmet for secure HTTP headers
+  - express-rate-limit for abuse protection
 - Clean Architecture
- - Modular structure (auth, user, routes, middlewares)
- - Centralized AppError system
+  - Modular structure (auth, user, routes, middlewares)
+  - Centralized AppError system
 - Type Safety
- - TypeScript strict mode
- - Express request augmentation
+  - TypeScript strict mode
+  - Express request augmentation
 - Developer Experience
- - Async handler (no repetitive try/catch)
- - ESLint & Prettier preconfigured
+  - Async handler (no repetitive try/catch)
+  - ESLint & Prettier preconfigured
 - Environment Ready
- - Local development
- - Production
- - Docker
- - CI pipelines
- - Serverless (Vercel)
+  - Local development
+  - Production
+  - Docker
+  - CI pipelines
+  - Serverless (Vercel)
 
 ### Roadmap / Planned
 - Role-based Access Control (RBAC)
