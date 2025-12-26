@@ -35,6 +35,9 @@ npm run dev
   - Secure, one-time reset tokens
   - Hashed tokens stored in database
   - Expiry enforced via centralized config
+- Automatic Super Admin bootstrap (environment-based)
+  - Creates initial Super Admin on first startup
+  - Idempotent and safe across restarts and serverless cold starts
 - Security Hardening
   - helmet for secure HTTP headers
   - express-rate-limit for abuse protection

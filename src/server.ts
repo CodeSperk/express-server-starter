@@ -1,12 +1,14 @@
 import app from './app';
 import config from './app/config';
 import { connectDB } from './app/config/connectDB';
+import { connectSuperAdmin } from './app/config/connectSuperAdmin';
 
 let isInitialized = false;
 
 async function init() {
   if (!isInitialized) {
     await connectDB();
+    await connectSuperAdmin();
     isInitialized = true;
   }
 }

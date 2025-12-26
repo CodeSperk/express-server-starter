@@ -16,4 +16,7 @@ export default {
   password_reset_expires_in: env.PASSWORD_RESET_EXPIRES_IN
     ? ms(env.PASSWORD_RESET_EXPIRES_IN)
     : DEFAULT_PASSWORD_RESET_TTL,
+  
+  super_admin_email: env.SUPER_ADMIN_EMAIL,
+  super_admin_password: env.SUPER_ADMIN_PASSWORD,
 };

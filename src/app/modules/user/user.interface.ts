@@ -4,7 +4,7 @@ export interface IUser {
   _id: Types.ObjectId;
   email: string;
   password: string;
-  role: 'user' | 'admin';
+  role: 'user' | 'admin' | 'super_admin';
   passwordChangedAt?: Date;
   passwordResetToken?: string;
   passwordResetExpires?: Date;
@@ -16,4 +16,4 @@ export interface IUserMethods {
   isPasswordChangedAfter(jwtTimestamp: number): boolean;
 }
 
-export type TUserRole = 'user' | 'admin';
+export type TUserRole = 'user' | 'admin' | 'super_admin';
