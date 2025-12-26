@@ -16,7 +16,7 @@ cd unified-server-kit
 npm install
 
 # Environment Variables
-# Create a `.env` file using `.env.example` as a reference.
+Create a `.env` file using `.env.example` as a reference.
 
 # Start development server
 npm run dev
@@ -25,10 +25,21 @@ npm run dev
 ## Features
 
 ### Included
+#### Authentication & Security
 - JWT Authentication
   - Access & Refresh tokens
   - Secure token verification
   - Password change invalidates old tokens
+- Logout support (stateless, frontend-controlled)
+- Forgot password & reset password flow
+  - Secure, one-time reset tokens
+  - Hashed tokens stored in database
+  - Expiry enforced via centralized config
+- Security Hardening
+  - helmet for secure HTTP headers
+  - express-rate-limit for abuse protection
+
+#### Architecture & Validation
 - Global Error Handling
   - Zod validation errors
   - Mongoose validation & duplicate key errors
@@ -37,19 +48,20 @@ npm run dev
 - Zod Validation
   - Request validation (body, params, query)
   - Environment variable validation
-- Security Hardening
-  - helmet for secure HTTP headers
-  - express-rate-limit for abuse protection
 - Clean Architecture
   - Modular structure (auth, user, routes, middlewares)
   - Centralized AppError system
 - Type Safety
   - TypeScript strict mode
   - Express request augmentation
-- Developer Experience
-  - Async handler (no repetitive try/catch)
-  - ESLint & Prettier preconfigured
-- Environment Ready
+
+- 
+#### Developer Experience
+- Async handler (no repetitive try/catch)
+- ESLint & Prettier preconfigured
+- Centralized config system (env.ts + config/index.ts)
+
+#### Environment Ready
   - Local development
   - Production
   - Docker
@@ -63,6 +75,7 @@ npm run dev
 - Swagger / OpenAPI documentation
 - Automated tests (unit & integration)
 - Request ID & structured logging
+- Email delivery integration (Nodemailer / SES / SendGrid)
 
 ## 🔐 Authentication Overview
 
@@ -73,7 +86,10 @@ npm run dev
 | POST   | `/auth/register`        | Register new user               |
 | POST   | `/auth/login`           | Login & receive tokens          |
 | POST   | `/auth/refresh`         | Refresh access token            |
+| POST   | `/auth/logout`          | Logout user (stateless)         |
 | POST   | `/auth/change-password` | Change password (protected)     |
+| POST   | `/auth/forgot-password` | Request password reset          |
+| POST   | `/auth/reset-password`  | Reset password reset            |
 
 ## Protected Route Example
 
@@ -119,7 +135,7 @@ schema.parse(req.body);
 | **Runtime**        | Node.js                     |
 | **Framework**      | Express.js + TypeScript  |
 | **Database**       | MongoDB (Mongoose)       |
-| **Auth**           | JWT(Access & Refresh Tokens)|
+| **Authentication**           | JWT(Access & Refresh Tokens)|
 | **Validation**     | Zod                         |
 | **Security**       | Helmet, Express Rate Limit  |
 | **Code Quality**   | ESLint, Prettier            |
