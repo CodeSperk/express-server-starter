@@ -3,7 +3,6 @@
 A production-ready Express.js starter kit built with **TypeScript**, **MongoDB**, and **Zod**, designed for clean architecture, strict validation, JWT-based authentication, and scalable backend development across local, production, Docker, CI, and serverless (Vercel) environments.
 
 🔗 Live Preview: https://unified-server-kit.vercel.app
-
 ---
 
 ## Quick Start
@@ -27,9 +26,9 @@ npm run dev
 
 ### Included
 - JWT Authentication
- - Access & Refresh tokens
- - Secure token verification
- - Password change invalidates old tokens
+  - Access & Refresh tokens
+  - Secure token verification
+  - Password change invalidates old tokens
 - Global Error Handling
  - Zod validation errors
  - Mongoose validation & duplicate key errors
