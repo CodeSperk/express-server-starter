@@ -53,7 +53,7 @@ router.get('/simple-error', (_req: Request, _res: Response) => {
 });
 
 router.get('/generic-error', (_req: Request, _res: Response) => {
-  throw new Error('This is a generic error');
+  throw new Error('This is a generic error ');
 });
 
 router.get('/success', (_req: Request, res) => {

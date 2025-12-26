@@ -1,16 +1,16 @@
 import mongoose from 'mongoose';
 import config from '.';
 
+let isConnected = false;
+
 export async function connectDB(): Promise<void> {
-  try {
-    const conn = await mongoose.connect(config.database_url as string, {
-      serverSelectionTimeoutMS: 10000,
-      socketTimeoutMS: 45000,
-      bufferCommands: false,
-    });
-    console.info(`MongoDB connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error('MongoDB connection failed', error);
-    throw error;
-  }
+  if (isConnected) return;
+
+  mongoose.set('strictQuery', true);
+  mongoose.set('autoIndex', config.node_env !== 'production');
+
+  await mongoose.connect(config.database_url);
+  isConnected = true;
+
+  console.info('MongoDB connected');
 }

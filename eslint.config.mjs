@@ -1,15 +1,14 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-import prettierConfig from 'eslint-config-prettier';
+import prettier from 'eslint-config-prettier';
 
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
-  prettierConfig,
-
+  prettier,
   {
-    files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       globals: {
         ...globals.node,
@@ -29,11 +28,10 @@ export default [
 
       'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
       'prefer-const': 'error',
-      'no-unused-expressions': 'error',
+      'no-unused-expressions': ['error', { allowShortCircuit: true }]
     },
   },
-
   {
     ignores: ['node_modules/', 'dist/', '*.js', '*.mjs', '*.cjs'],
-  },
+  }
 ];

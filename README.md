@@ -1,6 +1,6 @@
 # Unified Server Kit (Express Server Starter)
 
-A production-ready Express.js starter kit built with **TypeScript**, **MongoDB**, and **Zod**, designed for clean architecture, strict validation, and scalable backend development.
+A production-ready Express.js starter kit built with **TypeScript**, **MongoDB**, and **Zod**, designed for clean architecture, strict validation, JWT-based authentication, and scalable backend development across local, production, Docker, CI, and serverless (Vercel) environments.
 
 🔗 Live Preview: https://unified-server-kit.vercel.app
 
@@ -11,40 +11,81 @@ A production-ready Express.js starter kit built with **TypeScript**, **MongoDB**
 # Clone the repository
 git clone -b <branch-name> <your-repo-url>
 ex: git clone -b unified-server-kit https://github.com/CodeSperk/express-server-starter.git
-
 cd unified-server-kit
 
 # Install dependencies
 npm install
 
 # Environment Variables
-The server will **fail to start** if required environment variables are missing or invalid.
-
-# Required Variables
-Create a `.env` file using `.env.example` as a reference.
+# Create a `.env` file using `.env.example` as a reference.
 
 # Start development server
-npm start
+npm run dev
 ```
 
 ## Features
 
 ### Included
-
-- Global error handling (Zod, Mongoose, JWT, Multer)
-- Zod validation (request + environment)
-- Async handler wrapper (no try/catch in routes)
-- Centralized AppError system
-- TypeScript strict mode
-- ESLint & Prettier preconfigured
-
-### Planned
-
 - JWT Authentication
+ - Access & Refresh tokens
+ - Secure token verification
+ - Password change invalidates old tokens
+- Global Error Handling
+ - Zod validation errors
+ - Mongoose validation & duplicate key errors
+ - JWT & Multer errors
+ - Operational vs programming error separation
+- Zod Validation
+ - Request validation (body, params, query)
+ - Environment variable validation
+- Security Hardening
+ - helmet for secure HTTP headers
+ - express-rate-limit for abuse protection
+- Clean Architecture
+ - Modular structure (auth, user, routes, middlewares)
+ - Centralized AppError system
+- Type Safety
+ - TypeScript strict mode
+ - Express request augmentation
+- Developer Experience
+ - Async handler (no repetitive try/catch)
+ - ESLint & Prettier preconfigured
+- Environment Ready
+ - Local development
+ - Production
+ - Docker
+ - CI pipelines
+ - Serverless (Vercel)
+
+### Roadmap / Planned
 - Role-based Access Control (RBAC)
-- Rate Limiting & Security Headers
-- File Uploads
-- Swagger API documentation
+- Refresh token rotation with persistence
+- File uploads
+- Swagger / OpenAPI documentation
+- Automated tests (unit & integration)
+- Request ID & structured logging
+
+## 🔐 Authentication Overview
+
+### Available Auth Routes
+
+| Method | Endpoint                | Description                     |
+|--------|-------------------------|---------------------------------|
+| POST   | `/auth/register`        | Register new user               |
+| POST   | `/auth/login`           | Login & receive tokens          |
+| POST   | `/auth/refresh`         | Refresh access token            |
+| POST   | `/auth/change-password` | Change password (protected)     |
+
+## Protected Route Example
+
+```typescript
+router.post(
+  '/change-password',
+  authGuard,
+  validateRequest(schema),
+  controller,
+);
+```
 
 ## Basic Usage Example
 
@@ -79,7 +120,9 @@ schema.parse(req.body);
 | **Runtime**        | Node.js                     |
 | **Framework**      | Express.js + TypeScript  |
 | **Database**       | MongoDB (Mongoose)       |
+| **Auth**           | JWT(Access & Refresh Tokens)|
 | **Validation**     | Zod                         |
+| **Security**       | Helmet, Express Rate Limit  |
 | **Code Quality**   | ESLint, Prettier            |
 ---
 
@@ -87,8 +130,9 @@ schema.parse(req.body);
 
 Detailed internal docs are intentionally kept out of the README.
 - Error handling system
-- Middleware architecture
+- Middleware flow
 - Validation patterns
+- Auth & JWT flow
 - Deployment notes
 ➡️ See /docs directory (recommended for contributors)
 
