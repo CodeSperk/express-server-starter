@@ -1,4 +1,7 @@
+import ms from 'ms';
 import { env } from './env';
+
+const DEFAULT_PASSWORD_RESET_TTL = 10 * 60 * 1000;
 
 export default {
   port: env.PORT,
@@ -10,6 +13,7 @@ export default {
   jwt_refresh_secret: env.JWT_REFRESH_SECRET,
   jwt_refresh_expires_in: env.JWT_REFRESH_EXPIRES_IN,
 
-  password_reset_secret: env.PASSWORD_RESET_SECRET,
-  password_reset_expires_in: env.PASSWORD_RESET_EXPIRES_IN,
+  password_reset_expires_in: env.PASSWORD_RESET_EXPIRES_IN
+    ? ms(env.PASSWORD_RESET_EXPIRES_IN)
+    : DEFAULT_PASSWORD_RESET_TTL,
 };

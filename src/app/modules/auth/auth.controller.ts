@@ -11,6 +11,10 @@ const login = asyncHandler(async (req, res) => {
   res.json({ success: true, ...tokens });
 });
 
+const logout = asyncHandler(async (_req, res) => {
+  res.json({ success: true });
+});
+
 const refresh = asyncHandler(async (req, res) => {
   const accessToken = await authServices.refreshAccessToken(req.body.refreshToken);
   res.json({ success: true, accessToken });
@@ -21,9 +25,22 @@ const changePassword = asyncHandler(async (req, res) => {
   res.json({ success: true });
 });
 
+const forgotPassword = asyncHandler(async (req, res) => {
+  await authServices.forgotPassword(req.body.email);
+  res.json({ success: true });
+});
+
+const resetPassword = asyncHandler(async (req, res) => {
+  await authServices.resetPassword(req.body.token, req.body.password);
+  res.json({ success: true });
+});
+
 export const authControllers = {
   register,
   login,
+  logout,
   refresh,
   changePassword,
+  forgotPassword,
+  resetPassword
 };

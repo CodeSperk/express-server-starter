@@ -6,6 +6,8 @@ export interface IUser {
   password: string;
   role: 'user' | 'admin';
   passwordChangedAt?: Date;
+  passwordResetToken?: string;
+  passwordResetExpires?: Date;
   createdAt: Date;
   updatedAt: Date;
 }

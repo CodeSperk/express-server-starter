@@ -22,8 +22,15 @@ const changePasswordSchema = z.object({
   }),
 });
 
+const forgotPasswordSchema = z.object({
+  body: z.object({
+    email: z.string().email(),
+  }),
+});
+
 const resetPasswordSchema = z.object({
   body: z.object({
+    token: z.string(),
     password: z.string().min(8),
   }),
 });
@@ -33,5 +40,6 @@ export const authValidations = {
   loginSchema,
   refreshSchema,
   changePasswordSchema,
+  forgotPasswordSchema,
   resetPasswordSchema,
 };
