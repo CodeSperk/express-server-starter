@@ -1,16 +1,16 @@
-# Unified Server Kit (Express Server Starter)
+# CoreAuth Server (Express Server Starter)
 
 A production-ready Express.js starter kit built with **TypeScript**, **MongoDB**, and **Zod**, designed for clean architecture, strict validation, JWT-based authentication, and scalable backend development across local, production, Docker, CI, and serverless (Vercel) environments.
 
-🔗 Live Preview: https://unified-server-kit.vercel.app
+🔗 Live Preview: 
 ---
 
 ## Quick Start
 ```bash
 # Clone the repository
 git clone -b <branch-name> <your-repo-url>
-ex: git clone -b unified-server-kit https://github.com/CodeSperk/express-server-starter.git
-cd unified-server-kit
+ex: git clone -b coreauth-server https://github.com/CodeSperk/express-server-starter.git
+cd <folder_name>
 
 # Install dependencies
 npm install
@@ -73,12 +73,9 @@ npm run dev
 
 ### Roadmap / Planned
 - Role-based Access Control (RBAC)
-- Refresh token rotation with persistence
 - File uploads
-- Swagger / OpenAPI documentation
 - Automated tests (unit & integration)
 - Request ID & structured logging
-- Email delivery integration (Nodemailer / SES / SendGrid)
 
 ## 🔐 Authentication Overview
 
