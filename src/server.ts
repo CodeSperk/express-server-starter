@@ -1,15 +1,39 @@
-import app from "./app";
-import config from "./app/config";
-import { connectDB } from "./app/config/connectDB";
+import app from './app';
+import config from './app/config';
+import { connectDB } from './app/config/connectDB';
+import { connectSuperAdmin } from './app/config/connectSuperAdmin';
 
-(async function main() {
-  try {
-    await connectDB()
+let isInitialized = false;
 
-    app.listen(config.port, () => {
-      console.log(`Example app listening on http://localhost:${config.port}`);
-    });
-  } catch (err) {
-    console.log('Server startup failed.', err);
+async function init() {
+  if (!isInitialized) {
+    await connectDB();
+    await connectSuperAdmin();
+    isInitialized = true;
   }
-})();
+}
+
+/**
+ * Vercel / Serverless handler
+ */
+export default async function handler(req: any, res: any) {
+  await init();
+  return app(req, res);
+}
+
+/**
+ * Local / Docker execution
+ */
+if (config.node_env !== 'production') {
+  init()
+    .then(() => {
+      app.listen(config.port, () => {
+        console.info(`Server running on port ${config.port}`);
+        console.info(`Environment: ${config.node_env}`);
+      });
+    })
+    .catch(err => {
+      console.error('Server startup failed', err);
+      process.exit(1);
+    });
+}

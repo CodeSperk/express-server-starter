@@ -1,15 +1,20 @@
-import mongoose from "mongoose";
-import config from ".";
+import mongoose from 'mongoose';
+import config from '.';
+import { seedPermissions, seedSystemRoles } from '../modules/rbac/rbac.seed';
+
+let isConnected = false;
 
 export async function connectDB(): Promise<void> {
-  try {
-    const conn = await mongoose.connect(config.database_url as string, {
-      serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 45000,
-    });
-    console.log(`MongoDB connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error("MongoDB connection failed", error);
-    process.exit(1);
-  }
+  if (isConnected) return;
+
+  mongoose.set('strictQuery', true);
+  mongoose.set('autoIndex', config.node_env !== 'production');
+
+  await mongoose.connect(config.database_url);
+  isConnected = true;
+
+  await seedSystemRoles();
+  await seedPermissions();
+
+  console.info('MongoDB connected');
 }
